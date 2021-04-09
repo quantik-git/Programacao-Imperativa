@@ -56,3 +56,57 @@ int duplicaVogais(char *s) {
 
 	return 0;
 }
+
+
+// Arrays
+// 1
+
+int ordenado(int v[], int N) {
+	while(--N-1)
+		if(*v > *++v)
+			return 0;
+
+	return 1;
+}
+
+
+// 2
+
+void merge(int a[], int na, int b[], int nb, int r[]) {
+	int pa = 0, pb = 0;
+
+	for (int i = 0; i < na+nb; i++)
+		if (a[pa] < b[pb])
+			r[i] = a[pa++];
+		else
+			r[i] = b[pb++];
+}
+
+// cool two liner
+void merge(int a[], int na, int b[], int nb, int r[]) {
+	for (int i = 0, pa = 0, pb = 0; i < na+nb; i++)
+		r[i] = (a[pa] < b[pb]) ? a[pa++] : b[pb++];
+}
+
+
+// 3
+
+void swap(int *a, int *b) {
+	int temp = a;
+	a = b;
+	b = temp;
+}
+
+int partition(int v[], int N, int X) {
+	int offset = 0;
+
+	for (int i = 0; i+offset < N; i++) {
+		if (v[i] > x) {
+			while (v[i+offset] > x)
+				offset++;
+			swap(v[i], v[i+offset]);
+		}
+	}
+
+	return offset;
+}
